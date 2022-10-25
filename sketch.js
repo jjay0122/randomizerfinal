@@ -34,12 +34,13 @@ let poison = [
 
 let randomIndex;
 let animating = false;
-let power = [];
-let imageCounter = 0
+let power = [i];
+let imageCounter = 0;
+let button;
 
 function preload() {
   for (let i = 0; i <= 15; i++) {
-    power[i] = loadImage(`images/power_ ${i}.jpg`);
+    power[i] = loadImage(`images/power_${i}.jpg`);
   }
 }
 
@@ -47,19 +48,27 @@ function setup() {
   createCanvas(500, 500);
   background(220);
   textSize(20);
+  textStyle(BOLD)
   imageMode(CENTER);
+  frameRate(15);
 
   text("Click to Order", 190, 50);
   text("Your Poison", 198, 350);
 
-  console.log(power);
+  createButton("click to order")
+
 }
 
 function draw() {
   if (animating == true) {
-    clear();
     image(power[imageCounter], width / 2, height / 2);
-    imageCounter++;
+
+    if (imageCounter < power.length - 1) {
+      imageCounter++;
+      console.log(imageCounter);
+    } else {
+      imageCounter = 0;
+    }
   }
 }
 
@@ -84,5 +93,5 @@ it gives the power of ${poison[randomIndex].power}`,
 
 function mousePressed() {
   animating = true;
-  setTimeout(randomizer, 2000);
+  setTimeout(randomizer, 1000);
 }
