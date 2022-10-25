@@ -76,7 +76,7 @@ function randomizer() {
   animating = false;
 
   if (poison[0]) {
-    background(random(320, 100));
+    background(random(320), random(100), random(200));
     randomIndex = int(random(poison.length));
     text(
       `${poison[randomIndex].name}'s color is ${poison[randomIndex].color} 
